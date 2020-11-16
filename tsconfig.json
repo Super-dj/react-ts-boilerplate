@@ -21,11 +21,13 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "ACBAssets/*": ["./src/assets/*"]
     }
   },
   "include": [
-    "src"
+    "src",
+    "images.d.ts"
   ],
   "exclude": [
     "./node_modules"

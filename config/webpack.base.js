@@ -58,7 +58,7 @@ module.exports = merge(webpackConfig, {
             loader: 'html-loader'
           },
           {
-            test: /\.(j|t)sx?$/,
+            test: /\.([jt])sx?$/,
             include: APP_PATH,
             use: [
               {
@@ -130,7 +130,8 @@ module.exports = merge(webpackConfig, {
   resolve: {
     extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
     alias: {
-      '@': path.resolve(__dirname, '../src/')
+      '@': path.resolve(__dirname, '../src/'),
+      'ACBAssets': path.resolve(__dirname, '../src/assets/')
     }
   },
   plugins: [

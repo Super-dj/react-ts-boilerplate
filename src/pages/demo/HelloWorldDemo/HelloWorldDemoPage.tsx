@@ -1,7 +1,5 @@
 import React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-
-import Logo from './react-logo.svg'
 import './HelloWorldDemoPage.less'
 
 const HelloWorldDemoPage: React.FC<RouteComponentProps> = (routeProps: RouteComponentProps) => {
@@ -9,7 +7,6 @@ const HelloWorldDemoPage: React.FC<RouteComponentProps> = (routeProps: RouteComp
   return (
     <div className="App">
       <header className="App-header">
-        <Logo className="App-logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
