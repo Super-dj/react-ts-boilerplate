@@ -30,5 +30,25 @@
  *
  *
  */
+import { action, makeObservable, observable } from 'mobx'
+import React from 'react'
 
-export class CustomerRecordsPageStore {}
+export class CustomerRecordsPageStore {
+  constructor() {
+    makeObservable(this)
+  }
+  static Context = React.createContext<CustomerRecordsPageStore | undefined>(undefined)
+  static fromContext(context: CustomerRecordsPageStore): CustomerRecordsPageStore {
+    return context
+  }
+
+  id = Math.random()
+  @observable beginTime?: string = undefined
+  @observable endTime?: string = undefined
+
+  @action
+  onModifyFollowingTime(dateString: [string, string]) {
+    this.beginTime = dateString[0]
+    this.endTime = dateString[1]
+  }
+}

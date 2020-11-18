@@ -33,14 +33,36 @@
 import React from 'react'
 import { Button } from 'antd'
 import { FiltersPanel } from '@/pages/PC/customer-records/components/filters-panel'
+import { CustomerRecordsPageStore } from '@/pages/PC/customer-records/customer-records-page-store'
+import { observer } from 'mobx-react'
 
-export class CustomerRecordsPage extends React.Component<any, any> {
-  render() {
+const Provider = CustomerRecordsPageStore.Context.Provider
+
+interface CustomerRecordsPageProps {}
+
+interface CustomerRecordsPageState {}
+
+@observer
+export class CustomerRecordsPage extends React.Component<
+  CustomerRecordsPageProps,
+  CustomerRecordsPageState
+> {
+  private store: CustomerRecordsPageStore
+
+  constructor(props: CustomerRecordsPageProps) {
+    super(props)
+    this.store = new CustomerRecordsPageStore()
+  }
+  render(): JSX.Element {
     return (
-      <div>
-        <FiltersPanel />
-        <Button type="primary">Button</Button>
-      </div>
+      <Provider value={this.store}>
+        <div>
+          <FiltersPanel />
+          <div>{this.store.beginTime}</div>
+          <div>{this.store.endTime}</div>
+          <Button type="primary">Button</Button>
+        </div>
+      </Provider>
     )
   }
 }
